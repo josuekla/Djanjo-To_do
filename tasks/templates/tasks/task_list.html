@@ -9,7 +9,12 @@
     <h1>List To do in Python</h1>
     <ul>
         {% for task in tasks %}
-            <li>{{ task }}</li>
+        <a href="{% url "add_task" %}">Add task</a>
+            <li>
+                {{ task }} - {{ task.descriptio }}
+                <a href="{% url "update_task" %}">Edit</a>
+                <a href="{% url "delete_task" %}">Delete</a>
+            </li>
         {% endfor %}
     </ul>
     <a href="{% url "add_task" %}">Add task</a>
