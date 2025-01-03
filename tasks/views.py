@@ -10,7 +10,9 @@ def task_list(request):
 def add_task(request):
     if request.method == 'POST':
         title = request.POST.get('title')
-        Task.objects.create(title=title)
+        description = request.POST.get('description')
+        Task.objects.create(title=title, task_description=description)
+
         return redirect('task_list')
     return render(request, 'tasks/add_task.html')
 
