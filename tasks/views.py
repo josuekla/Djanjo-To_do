@@ -13,3 +13,17 @@ def add_task(request):
         Task.objects.create(title=title)
         return redirect('task_list')
     return render(request, 'tasks/add_task.html')
+
+def update_task(request, task_id):
+    task = Task.objects.get(id=task_id)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        task.title = title
+        task.save()
+        return redirect('task_list')
+    return render(request, 'tasks/update_task.html', {'task': task})
+
+def delete_task(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.delete()
+    return redirect('task_list')
