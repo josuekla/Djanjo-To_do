@@ -10,11 +10,12 @@ def task_list(request):
 def add_task(request):
     if request.method == 'POST':
         title = request.POST.get('title')
-        description = request.POST.get('description')
-        Task.objects.create(title=title, task_description=description)
-
+        description = request.POST.get('description')  
+        if title and description:
+            Task.objects.create(title=title, description=description)
         return redirect('task_list')
     return render(request, 'tasks/add_task.html')
+
 
 def update_task(request, task_id):
     task = get_list_or_404(Task, task_id=task_id)
