@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from .models import Task
 
 def task_list(request):
@@ -17,10 +17,11 @@ def add_task(request):
     return render(request, 'tasks/add_task.html')
 
 def update_task(request, task_id):
-    task = Task.objects.get(id=task_id)
+    task = get_list_or_404(Task, task_id=task_id)
     if request.method == 'POST':
         title = request.POST.get('title')
-        task.title = title
+        task.description = request.POST.get('description')
+        task.description = request.POST.get('description')
         task.save()
         return redirect('task_list')
     return render(request, 'tasks/update_task.html', {'task': task})
