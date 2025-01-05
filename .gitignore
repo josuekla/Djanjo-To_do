@@ -3,3 +3,4 @@ venv
 db.sqlite3
 ToDo_list/__pycache__/settings.cpython-312.pyc
 ToDo_list/__pycache__/urls.cpython-312.pyc
+db.sqlite3
