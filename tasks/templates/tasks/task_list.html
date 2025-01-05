@@ -13,7 +13,7 @@
             <li>
                 {{ task.title }} - {{ task.descriptio }}
                 <a href="{% url 'update_task' task.id %}">Edit</a>
-                <a href="{% url "delete_task" task.id %}">Delete</a>
+                <a href="{% url "delete_task" task.id %}" onclick="confirme('Você realmente que remover a task?')">Delete</a>
             </li>
         {% endfor %}
     </ul>
